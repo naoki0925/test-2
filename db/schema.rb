@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_07_064418) do
+ActiveRecord::Schema.define(version: 2021_02_08_145811) do
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
