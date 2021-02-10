@@ -1,13 +1,11 @@
 <%= render 'books/list', books: @book %>
 
 <div>
-  <h2>Book detail</h2>	
+  <h2>Book detail</h2>
   <table>
   	<tbody>
-  		<tr>
-  			<td><%= book.title %></td>
-  			<td><%= book.body %></td>
-  		</tr>
+  		<td><%= @book.title %></td>
+  		<td><%= @book.body %></td>
   	</tbody>
   </table>
 </div>
