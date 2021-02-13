@@ -1,6 +1,9 @@
+<%= render 'books/list', books: @book %>
+
 <div>
 	<h2>User</h2>
-	<thead>
+	<table>
+		<thead>
 		<tr>
 			<th>image</th>
 			<th>name</th>
@@ -9,7 +12,18 @@
 	</thead>
 	<tbody>
 		<% @users.each do |user| %>
-			<tr><%= link_to(user.name, "/users/#{user.id}") %></tr>
+	  <tr>
+	  	<td>
+	  		<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+	  	</td>
+	  	<td>
+	  		<%= @user.name %>
+	  	</td>
+	  	<td>
+	  		<%= link_to "show", "/users/#{user.id}" %>
+	  	</td>
+	  </tr>
 		<% end %>
 	</tbody>
+	</table>
 </div>
