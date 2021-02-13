@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = Book.all
-    @user = User.new
     @users = @user.books.page(params[:page]).reverse_order
   end
 
@@ -20,11 +19,8 @@ class UsersController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    if @book.save
-      redirect_to book_path @book
-    else
-      render :index
-    end
+    @book.save
+    redirect_to book_path @book
   end
 
   def edit
