@@ -1,11 +1,5 @@
 class UsersController < ApplicationController
 
-  def top
-  end
-
-  def about
-  end
-
   def new
     @book = Book.new
   end
@@ -21,7 +15,7 @@ class UsersController < ApplicationController
   def index
     @books = Book.all
     @users = User.all
-    @user = User.new
+    @user = current_user
   end
 
   def create
