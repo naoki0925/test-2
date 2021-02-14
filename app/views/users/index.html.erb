@@ -1,6 +1,5 @@
 <%= render 'users/list' %>
 <%= render 'books/list', book: @book %>
-
 <div>
 	<h2>User</h2>
 	<table>
@@ -21,7 +20,7 @@
 	  		<%= user.name %>
 	  	</td>
 	  	<td>
-	  		<%= link_to "show", @user %>
+	  		<%= link_to "show", "/users/#{user.id}" %>
 	  	</td>
 	  </tr>
 		<% end %>

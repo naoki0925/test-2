@@ -10,8 +10,11 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    if @book.save
+    @book = Book.new(
+      book_params,
+      user_id: @current_user.id #user_idを入れる
+      )#空のデータにbook_paramsが入っている
+    if @book.save               #@bookに保存している
       redirect_to book_path @book
     else
       render :index
@@ -21,11 +24,11 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.all
-    @users = User.all
   end
 
   def show
-    @book = Book.find(params[:id])
+    @book = Book.new #urlのidのデータ
+    @booknew = Book.find(params[:id])
     @books = Book.all
     @user = current_user
   end
