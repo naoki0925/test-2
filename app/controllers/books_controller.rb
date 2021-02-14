@@ -22,7 +22,6 @@ class BooksController < ApplicationController
     @book = Book.new
     @books = Book.all
     @users = User.all
-    @user = current_user
   end
 
   def show
@@ -52,6 +51,6 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.permit(:title, :body)
+    params.require(:book).permit(:title, :body)
   end
 end

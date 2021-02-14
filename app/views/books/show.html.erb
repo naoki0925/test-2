@@ -5,7 +5,8 @@
   <table>
   	<tbody>
   	  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  		<td><%= book.title %></td>
+  	  <td><%= @user.name %></td>
+  		<td><%= @book.title %></td>
   		<td><%= @book.body %></td>
   		<%= link_to "Edit", edit_book_path(current_user) %>
   		<%= link_to "Destroy", book_path(current_user), method: :delete, "date-confirm" => "本当に削除しますか？" %>

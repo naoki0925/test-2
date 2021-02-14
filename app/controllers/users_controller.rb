@@ -8,13 +8,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = Book.all
-    @users = @user.books.page(params[:page]).reverse_order
+    @books = Book.page(params[:page]).reverse_order
   end
 
   def index
     @books = Book.all
     @users = User.all
-    @user = current_user
   end
 
   def create
@@ -38,7 +37,7 @@ class UsersController < ApplicationController
 
   private
   def book_params
-    params.permit(:title, :body)
+    params.require(:book).permit(:title, :body)
   end
 
   def user_params

@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2021_02_09_115145) do
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "body"
+    t.string "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
