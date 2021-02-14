@@ -10,10 +10,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(
-      book_params,
-      user_id: @current_user.id #user_idを入れる
-      )#空のデータにbook_paramsが入っている
+    @book = Book.new(book_params)#空のデータにbook_paramsが入っている
     if @book.save               #@bookに保存している
       redirect_to book_path @book
     else
@@ -38,7 +35,7 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = Book.new(book_params)
+    @book = Book.find(params[:id])
     if @book.update(book_params)
       redirect_to book_path @book
     else
