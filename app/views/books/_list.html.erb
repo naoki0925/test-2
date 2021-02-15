@@ -1,13 +1,15 @@
 <h2>New book</h2>
-  <%= form_with model: book, url:'/books', local: true do |f| %>
+  <%= form_with model: book, local: true do |f| %>
 
   <div>
-	  <label for="book_title">Title</label>
+    Title
+	  <% f.label :title %>
 	  <%= f.text_field :title %>
   </div>
 
   <div>
-  	<label for="book_opinion">Opinion</label>
+    Opinion
+  	<% f.label :body %>
 	  <%= f.text_area :body %>
   </div>
 

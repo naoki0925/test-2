@@ -7,8 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @books = Book.where(user_id: @user.id).all
-    @books = Book.page(params[:page]).reverse_order
+    @books = @user.books
+    @book = Book.new
   end
 
   def index
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :user_id)
   end
 
   def user_params
