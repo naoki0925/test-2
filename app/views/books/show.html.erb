@@ -14,8 +14,10 @@
   	  <td><%= @user.name %></td>
   		<td><%= @booknew.title %></td>
   		<td><%= @booknew.body %></td>
-  		<%= link_to "Edit", edit_book_path(current_user) %>
-  		<%= link_to "Destroy", book_path(current_user), method: :delete, "date-confirm" => "本当に削除しますか？" %>
+  		<% if @user.id == current_user.id %>
+  		<%= link_to "Edit", edit_book_path(@book) %>
+  		<%= link_to "Destroy", book_path(@book), method: :delete, "date-confirm" => "本当に削除しますか？" %>
+  		<% end %>
   	</tbody>
   </table>
 </div>
