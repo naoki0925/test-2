@@ -22,18 +22,17 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.new #urlのidのデータ
-    @booknew = Book.find(params[:id])
-    @books = Book.all
-    @user = current_user
+    @book_new = Book.new #urlのidのデータ
+    @book = Book.find(params[:id])
+    @user = @book.user
   end
 
   def edit
     @book = Book.find(params[:id])
-    if @book.user ==current_user
+    if @book.user == current_user
       render "edit"
     else
-      redirect_to book_path @book
+      redirect_to edit_book_path @book
     end
   end
 

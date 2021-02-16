@@ -12,9 +12,9 @@
   	<tbody>
   	  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
   	  <td><%= @user.name %></td>
-  		<td><%= @booknew.title %></td>
-  		<td><%= @booknew.body %></td>
-  		<% if @user.id == current_user.id %>
+  		<td><%= @book.title %></td>
+  		<td><%= @book.body %></td>
+  		<% if @book.user == current_user %>
   		<%= link_to "Edit", edit_book_path(@book) %>
   		<%= link_to "Destroy", book_path(@book), method: :delete, "date-confirm" => "本当に削除しますか？" %>
   		<% end %>
