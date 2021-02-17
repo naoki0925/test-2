@@ -4,20 +4,26 @@
       </div>
     <% end %>
 
-<%= render 'users/list', user: @user %>
-<%= render 'books/list', book: @book_new %>
-<div>
-  <h2>Book detail</h2>
-  <table>
-  	<tbody>
-  	  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  	  <td><%= @user.name %></td>
-  		<td><%= @book.title %></td>
-  		<td><%= @book.body %></td>
-  		<% if @book.user == current_user %>
-  		<%= link_to "Edit", edit_book_path(@book) %>
-  		<%= link_to "Destroy", book_path(@book), method: :delete, "date-confirm" => "本当に削除しますか？" %>
-  		<% end %>
-  	</tbody>
-  </table>
+<div class="container">
+  <div class="row">
+    <%= render 'users/list', user: @user %>
+    <%= render 'books/list', book: @book_new %>
+    <divbclass="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+      	<tbody>
+      	  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      	  <tr>
+      	    <td><%= link_to @user.name, user_path(@user) %></td>
+      		  <td><%= link_to @book.title, book_path(@book)%></td>
+      		  <td><%= @book.body %></td>
+      		  <% if @book.user == current_user %>
+      		  <td><%= link_to "Edit", edit_book_path(@book) %></td>
+      		  <td><%= link_to "Destroy", book_path(@book), method: :delete, "date-confirm" => "本当に削除しますか？" %></td>
+      	  </tr>
+      	  <% end %>
+      	</tbody>
+      </table>
+    </div>
+  </div>
 </div>
