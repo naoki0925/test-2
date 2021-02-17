@@ -2,9 +2,6 @@ class UsersController < ApplicationController
   def top
   end
 
-  def about
-  end
-
   def new
     @book = Book.new
   end
@@ -19,7 +16,6 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @book = Book.new
-    @books = Book.all
     @users = User.all
   end
 
@@ -33,7 +29,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     if @user == current_user
-      render "edit"
+      render :edit
     else
       redirect_to user_path current_user
     end

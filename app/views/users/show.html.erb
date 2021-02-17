@@ -1,9 +1,9 @@
-<% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-    
+ <% if flash[:notice] %>
+   <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
 <%= render 'users/list', user: @user %>
 <%= render 'books/list', book: @book %>
 
@@ -21,7 +21,7 @@
     <tbody>
         <% @books.each do |book| %>
           <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
-          <td><%= link_to book.title, "/books/#{book.id}" %></td>
+          <td><%= link_to book.title, user_path(book.user) %></td>
           <td><%= book.body %></td>
         <% end %>
     </tbody>
