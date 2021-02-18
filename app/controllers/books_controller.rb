@@ -5,7 +5,7 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     if @book.save               #@bookに保存している
       flash[:notice] = "You have created book successfully."
-      redirect_to book_path @book
+      redirect_to book_path(@book)
     else
       @user = current_user
       @books = Book.all
@@ -15,7 +15,6 @@ class BooksController < ApplicationController
 
   def index
     @user = current_user
-    @book_new = Book.new
     @book = Book.new
     @books = Book.all
   end
@@ -50,7 +49,7 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :body, :user_id)
+    params.require(:book).permit(:title, :body)
   end
 
 end
