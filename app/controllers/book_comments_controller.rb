@@ -2,21 +2,27 @@ class BookCommentsController < ApplicationController
 	before_action :authenticate_user!
 
   def create
-    book = Book.find(params[:book_id])
-    @comment = book.comments.build(comment_params)
-    @comment.user_id = current_user.id
-    if @comment.save
-      flash[:success] = "コメントしました"
-      redirect_back(fallback_location: root_path)
-    else
-      flash[:success] = "コメントできませんでした"
-      redirect_back(fallback_location: root_path)
-    end
+    @book = Book.find(params[:book_id])
+		@book_comment = BookComment.new(book_comment_params)
+		@book_comment.book_id = @book.id
+		@book_comment.user_id = current_user.id
+		if @book_comment.save
+  		redirect_to book_path(@book.id)
+		else
+		  render 'books/show'
+		end
   end
 
-  private
+  def destroy
+		@book = Book.find(params[:book_id])
+  	book_comment = @book.book_comments.find(params[:id])
+		book_comment.destroy
+		redirect_to request.referer
+	end
 
-    def comment_params
-      params.require(:comment).permit(:content)
-    end
+  private
+	def book_comment_params
+		params.require(:book_comment).permit(:comment)
+	end
+
 end

@@ -19,12 +19,14 @@ class BooksController < ApplicationController
     @user = current_user
     @book = Book.new
     @books = Book.all
+    @book_comment = BookComment.new
   end
 
   def show
     @book_new = Book.new #urlのidのデータ
     @book = Book.find(params[:id])
     @user = @book.user
+    @book_comment = BookComment.new
   end
 
   def edit
