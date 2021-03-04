@@ -19,7 +19,9 @@
 			  <tr>
 			  	<td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
 			  	<td><%= user.name %></td>
-			  	<td><%= render 'relationships/list', user: @user, following: @following %></td>
+			  	<td>
+			  		<%= render "relationships/list", user: user %>
+			  	</td>
 			  	<td><%= link_to "Show", "/users/#{user.id}", class: "user_#{user.id}" %></td>
 			  </tr>
 				<% end %>
