@@ -1,9 +1,6 @@
-<div class="container px-5 px-sm-0">
-	<div class="row">
-		<div class="col-md-3">
-      <%= render 'users/list', user: @user %>
-      <%= render 'books/list', book: @book %>
-    </div>
+<h2>Follow Users</h2>
+<% if @users.exists? %>
+      </div>
 		<div class="col-md-8 offset-md-1">
 			<h2>User</h2>
 			<table class="table">
@@ -31,4 +28,6 @@
 			</table>
 		</div>
 	</div>
-</div>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
