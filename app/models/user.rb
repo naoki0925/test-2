@@ -8,7 +8,7 @@ class User < ApplicationRecord
          has_many :favorites, dependent: :destroy
          has_many :favorite_books, through: :favorites, source: :book
          has_many :comments
-         
+
          attachment :profile_image
 
          validates :name, presence: true, uniqueness: true, length: 2..20
@@ -31,4 +31,17 @@ class User < ApplicationRecord
          followings.include?(user)
         end
 
-end 
+        def self.search(search,word)
+         if search == "forward_match"
+          @user = User.where("name LIKE?","#{word}%")
+         elsif search == "backward_match"
+          @user = User.where("name LIKE?","%#{word}")
+         elsif search == "perfect_match"
+          @user = User.where("#{word}")
+         elsif search == "partial_match"
+          @user = User.where("name LIKE?","%#{word}%")
+         else
+          @user = User.all
+         end
+        end
+end
